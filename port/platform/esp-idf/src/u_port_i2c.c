@@ -166,13 +166,7 @@ static int32_t timeoutEsp32ToMs(int32_t timeoutEsp32) {
 
 // Close an I2C instance.
 static void closeI2c(int32_t index) {
-    if (gI2cData[index].clockHertz > 0) {
-        if (!gI2cData[index].adopted) {
-            i2c_driver_delete(index);
-        }
-        gI2cData[index].clockHertz = -1;
-        U_ATOMIC_DECREMENT(&gResourceAllocCount);
-    }
+
 }
 
 // Send an I2C message, returning zero on success else negative error code.
